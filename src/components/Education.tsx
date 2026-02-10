@@ -10,6 +10,7 @@ const education = {
 };
 
 const certifications = [
+  "GraphQL Course (Udemy)",
   "Ruby (Udemy)",
   "Node.js Bootcamp (Udemy)",
   "ReactJS Development (ICK)",
@@ -23,7 +24,11 @@ const Education = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="education" className="section-container bg-secondary/20" ref={ref}>
+    <section
+      id="education"
+      className="section-container bg-secondary/20"
+      ref={ref}
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -49,7 +54,9 @@ const Education = () => {
             <div className="border-l-2 border-primary pl-6">
               <h4 className="font-semibold text-lg">{education.degree}</h4>
               <p className="text-muted-foreground">{education.institution}</p>
-              <p className="text-sm text-muted-foreground mt-1">{education.location}</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {education.location}
+              </p>
             </div>
           </motion.div>
 

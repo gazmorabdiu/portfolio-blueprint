@@ -22,6 +22,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      setIsMobileMenuOpen(false);
+      // Scroll after menu close animation so layout is stable and scroll lands correctly
+      setTimeout(() => {
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 350);
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -32,7 +45,14 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold font-mono text-gradient">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="text-xl font-bold font-mono text-gradient"
+        >
           {"<GA />"}
         </a>
 
@@ -45,7 +65,11 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <a href={link.href} className="nav-link font-mono text-sm">
+              <a
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="nav-link font-mono text-sm"
+              >
                 <span className="text-primary">0{i + 1}.</span> {link.label}
               </a>
             </motion.li>
@@ -88,7 +112,7 @@ const Navbar = () => {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => scrollToSection(e, link.href)}
                     className="nav-link font-mono text-lg"
                   >
                     <span className="text-primary">0{i + 1}.</span> {link.label}

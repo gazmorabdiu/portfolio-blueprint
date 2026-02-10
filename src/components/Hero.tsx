@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
 
+const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -77,12 +82,14 @@ const Hero = () => {
           >
             <a
               href="#projects"
+              onClick={(e) => scrollToSection(e, "projects")}
               className="px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all duration-300 glow-effect"
             >
               View Projects
             </a>
             <a
               href="#contact"
+              onClick={(e) => scrollToSection(e, "contact")}
               className="px-8 py-4 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition-all duration-300"
             >
               Contact Me
@@ -124,10 +131,14 @@ const Hero = () => {
       {/* Scroll indicator */}
       <motion.a
         href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors cursor-pointer"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
