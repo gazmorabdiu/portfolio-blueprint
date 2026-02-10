@@ -17,12 +17,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/lib/email";
 import { useState } from "react";
@@ -164,20 +164,33 @@ const Contact = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Subject</FormLabel>
-                    <Select onValueChange={field.onChange} value={field.value}>
+                    <DropdownMenu modal={false}>
                       <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="What's this about?" />
-                        </SelectTrigger>
+                        <DropdownMenuTrigger asChild>
+                          <button
+                            type="button"
+                            className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1"
+                          >
+                            <span className={field.value ? "" : "text-muted-foreground"}>
+                              {field.value
+                                ? SUBJECT_OPTIONS.find((o) => o.value === field.value)?.label
+                                : "What's this about?"}
+                            </span>
+                            <ChevronDown className="h-4 w-4 opacity-50" />
+                          </button>
+                        </DropdownMenuTrigger>
                       </FormControl>
-                      <SelectContent>
+                      <DropdownMenuContent align="start" className="min-w-[var(--radix-dropdown-menu-trigger-width)]">
                         {SUBJECT_OPTIONS.map((opt) => (
-                          <SelectItem key={opt.value} value={opt.value}>
+                          <DropdownMenuItem
+                            key={opt.value}
+                            onSelect={() => field.onChange(opt.value)}
+                          >
                             {opt.label}
-                          </SelectItem>
+                          </DropdownMenuItem>
                         ))}
-                      </SelectContent>
-                    </Select>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                     <FormMessage />
                   </FormItem>
                 )}
