@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import { sendContactEmail } from "@/lib/email";
+import { useState } from "react";
 
 const contactSchema = z.object({
   email: z.string().trim().email("Please enter a valid email address").max(255),
@@ -23,6 +25,8 @@ const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const [isSending, setIsSending] = useState(false);
+
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -32,14 +36,28 @@ const Contact = () => {
     },
   });
 
-  const onSubmit = (data: ContactFormValues) => {
-    // TODO: Integrate with your email sender (e.g., EmailJS, Resend, etc.)
-    console.log("Form submitted:", data);
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    form.reset();
+  const onSubmit = async (data: ContactFormValues) => {
+    setIsSending(true);
+    try {
+      await sendContactEmail({
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+      });
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    } catch (err) {
+      toast({
+        title: "Failed to send",
+        description: err instanceof Error ? err.message : "Something went wrong. Try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -105,9 +123,9 @@ const Contact = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" size="lg" className="w-full gap-2 glow-effect">
+              <Button type="submit" size="lg" className="w-full gap-2 glow-effect" disabled={isSending}>
                 <Send size={18} />
-                Send Message
+                {isSending ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Form>

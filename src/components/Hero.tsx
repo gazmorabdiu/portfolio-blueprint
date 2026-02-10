@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, FileDown } from "lucide-react";
 
 const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
   e.preventDefault();
@@ -93,6 +93,14 @@ const Hero = () => {
               className="px-8 py-4 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition-all duration-300"
             >
               Contact Me
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Gazmor-Abdiu-Resume.pdf"
+              className="px-8 py-4 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition-all duration-300 inline-flex items-center gap-2"
+            >
+              <FileDown size={18} />
+              Resume
             </a>
           </motion.div>
 

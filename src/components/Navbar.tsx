@@ -80,8 +80,8 @@ const Navbar = () => {
             transition={{ delay: 0.5 }}
           >
             <a
-              href="/cv.pdf"
-              target="_blank"
+              href="/resume.pdf"
+              download="Gazmor-Abdiu-Resume.pdf"
               className="px-4 py-2 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors font-mono text-sm"
             >
               Resume
@@ -121,8 +121,8 @@ const Navbar = () => {
               ))}
               <li>
                 <a
-                  href="/cv.pdf"
-                  target="_blank"
+                  href="/resume.pdf"
+                  download="Gazmor-Abdiu-Resume.pdf"
                   className="px-6 py-3 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors font-mono"
                 >
                   Resume
