@@ -5,19 +5,60 @@ import { Mail, MapPin, Github, Linkedin, Send } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/lib/email";
 import { useState } from "react";
 
-const contactSchema = z.object({
-  email: z.string().trim().email("Please enter a valid email address").max(255),
-  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be less than 200 characters"),
-  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
-});
+const SUBJECT_OPTIONS = [
+  { value: "web-developer", label: "Web Developer opportunity" },
+  { value: "project", label: "Project collaboration" },
+  { value: "freelance", label: "Freelance work" },
+  { value: "general", label: "General inquiry" },
+  { value: "other", label: "Other" },
+] as const;
+
+const contactSchema = z
+  .object({
+    email: z
+      .string()
+      .trim()
+      .email("Please enter a valid email address")
+      .max(255),
+    subjectType: z.string().min(1, "Please select a subject"),
+    subjectCustom: z.string().trim().max(200).optional(),
+    message: z
+      .string()
+      .trim()
+      .min(1, "Message is required")
+      .max(2000, "Message must be less than 2000 characters"),
+  })
+  .refine(
+    (data) =>
+      data.subjectType !== "other" ||
+      (data.subjectCustom?.trim()?.length ?? 0) > 0,
+    {
+      message: "Please write your subject",
+      path: ["subjectCustom"],
+    }
+  );
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
@@ -31,28 +72,45 @@ const Contact = () => {
     resolver: zodResolver(contactSchema),
     defaultValues: {
       email: "",
-      subject: "",
+      subjectType: "",
+      subjectCustom: "",
       message: "",
     },
   });
 
+  const subjectType = form.watch("subjectType");
+  const isOtherSubject = subjectType === "other";
+
   const onSubmit = async (data: ContactFormValues) => {
+    const subject =
+      data.subjectType === "other"
+        ? data.subjectCustom?.trim() ?? ""
+        : SUBJECT_OPTIONS.find((o) => o.value === data.subjectType)?.label ??
+          data.subjectType;
     setIsSending(true);
     try {
       await sendContactEmail({
         email: data.email,
-        subject: data.subject,
+        subject,
         message: data.message,
       });
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
       });
-      form.reset();
+      form.reset({
+        email: "",
+        subjectType: "",
+        subjectCustom: "",
+        message: "",
+      });
     } catch (err) {
       toast({
         title: "Failed to send",
-        description: err instanceof Error ? err.message : "Something went wrong. Try again.",
+        description:
+          err instanceof Error
+            ? err.message
+            : "Something went wrong. Try again.",
         variant: "destructive",
       });
     } finally {
@@ -73,8 +131,8 @@ const Contact = () => {
 
         <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
           I'm currently open to new opportunities and always excited to discuss
-          interesting projects. Whether you have a question or just want to say hi,
-          feel free to reach out!
+          interesting projects. Whether you have a question or just want to say
+          hi, feel free to reach out!
         </p>
 
         <motion.div
@@ -83,7 +141,10 @@ const Contact = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 text-left">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 text-left"
+            >
               <FormField
                 control={form.control}
                 name="email"
@@ -99,17 +160,43 @@ const Contact = () => {
               />
               <FormField
                 control={form.control}
-                name="subject"
+                name="subjectType"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Subject</FormLabel>
-                    <FormControl>
-                      <Input placeholder="What's this about?" {...field} />
-                    </FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="What's this about?" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {SUBJECT_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              {isOtherSubject && (
+                <FormField
+                  control={form.control}
+                  name="subjectCustom"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Your subject</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Write your subject..." {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
               <FormField
                 control={form.control}
                 name="message"
@@ -117,13 +204,22 @@ const Contact = () => {
                   <FormItem>
                     <FormLabel>Message</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Write your message here..." rows={6} {...field} />
+                      <Textarea
+                        placeholder="Write your message here..."
+                        rows={6}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit" size="lg" className="w-full gap-2 glow-effect" disabled={isSending}>
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full gap-2 glow-effect"
+                disabled={isSending}
+              >
                 <Send size={18} />
                 {isSending ? "Sending..." : "Send Message"}
               </Button>
