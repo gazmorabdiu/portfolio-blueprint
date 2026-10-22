@@ -1,0 +1,18 @@
+{
+  "title": "Aftësitë & Teknologjitë",
+  "categories": {
+    "coreStack": "Stack kryesor",
+    "backend": "Backend",
+    "architecture": "Arkitektura",
+    "frontend": "Frontend",
+    "tools": "Mjete & sisteme",
+    "softSkills": "Aftësi personale"
+  },
+  "soft": {
+    "adaptive": "I përshtatshëm",
+    "problemSolver": "Zgjidhës problemesh",
+    "teamPlayer": "Lojtar ekipi",
+    "communicator": "Komunikues efektiv",
+    "quickLearner": "Mësim i shpejtë"
+  }
+}

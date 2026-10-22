@@ -1,45 +1,35 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Zap, CreditCard, Scale, FileText } from "lucide-react";
+import { Zap, CreditCard, Server, FileText } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Technologies } from "@/lib/enums";
 
 const projects = [
   {
-    title: "Performance Optimization",
+    id: "performance",
     icon: Zap,
-    description:
-      "Built an in-memory storage layer with Redis that resulted in 3x faster microservices performance. Optimized data access patterns and caching strategies.",
-    impact: "3x Performance Boost",
     tech: [Technologies.Redis, Technologies.Node, Technologies.Microservices],
   },
   {
-    title: "Refund System",
+    id: "refund",
     icon: CreditCard,
-    description:
-      "Designed and implemented a transparent refund logic system that improved customer trust and streamlined financial operations.",
-    impact: "Enhanced Transparency",
     tech: [Technologies.Nest, Technologies.MySQL, Technologies.FinancialLogic],
   },
   {
-    title: "Case Management Platform",
-    icon: Scale,
-    description:
-      "Led backend architecture and database design for a comprehensive case management platform serving the legal industry.",
-    impact: "Full Backend Design",
-    tech: [Technologies.MongoDB, Technologies.Prisma, Technologies.Nest, Technologies.LegalTech],
+    id: "apis",
+    icon: Server,
+    tech: [Technologies.Node, Technologies.Nest, Technologies.RESTAPI],
   },
   {
-    title: "API Documentation System",
+    id: "apiDocs",
     icon: FileText,
-    description:
-      "Created comprehensive Swagger documentation that improved team onboarding velocity and cross-team collaboration.",
-    impact: "Faster Onboarding",
     tech: [Technologies.Swagger, Technologies.OpenAPI, Technologies.RESTAPI],
   },
 ];
 
 const Projects = () => {
+  const { t } = useTranslation("projects");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -57,13 +47,13 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="section-container" ref={ref}>
+    <section id="achievements" className="section-container" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="section-title">Key Achievements</h2>
+        <h2 className="section-title">{t("title")}</h2>
 
         <motion.div
           variants={containerVariants}
@@ -73,7 +63,7 @@ const Projects = () => {
         >
           {projects.map((project) => (
             <motion.div
-              key={project.title}
+              key={project.id}
               variants={itemVariants}
               className="glass-card p-8 group hover:border-primary/30 transition-all duration-300"
             >
@@ -82,16 +72,16 @@ const Projects = () => {
                   <project.icon size={28} />
                 </div>
                 <span className="text-sm font-mono text-primary bg-primary/10 px-3 py-1 rounded-full">
-                  {project.impact}
+                  {t(`items.${project.id}.impact`)}
                 </span>
               </div>
 
               <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                {project.title}
+                {t(`items.${project.id}.title`)}
               </h3>
 
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                {project.description}
+                {t(`items.${project.id}.description`)}
               </p>
 
               <div className="flex flex-wrap gap-2">

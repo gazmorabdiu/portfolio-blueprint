@@ -1,0 +1,8 @@
+{
+  "greeting": "Përshëndetje, unë jam",
+  "name": "Gazmor Abdiu.",
+  "tagline": "Ndërtoj sisteme të shkallëzueshme.",
+  "intro": "Zhvillues software full-stack i specializuar në ndërtimin e sistemeve backend me performancë të lartë dhe aplikacioneve moderne full-stack me <primary>Node.js</primary>, <primary>NestJS</primary> dhe <primary>React</primary>.",
+  "viewProjects": "Shiko projektet",
+  "contactMe": "Më kontakto"
+}

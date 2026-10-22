@@ -2,24 +2,12 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { GraduationCap, Award } from "lucide-react";
-
-const education = {
-  degree: "BSc Computer Engineering",
-  institution: "Ondokuz Mayis University",
-  location: "Turkey",
-};
-
-const certifications = [
-  "GraphQL Course (Udemy)",
-  "Ruby (Udemy)",
-  "Node.js Bootcamp (Udemy)",
-  "ReactJS Development (ICK)",
-  "MySQL Bootcamp",
-  "GraphQL Course",
-  "Ruby Programming",
-];
+import { useTranslation } from "react-i18next";
 
 const Education = () => {
+  const { t } = useTranslation("education");
+  const certifications = t("certs", { returnObjects: true }) as string[];
+  const languages = t("langs", { returnObjects: true }) as string[];
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -34,7 +22,7 @@ const Education = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="section-title">Education & Certifications</h2>
+        <h2 className="section-title">{t("title")}</h2>
 
         <div className="grid md:grid-cols-2 gap-8 mt-12">
           {/* Education */}
@@ -48,15 +36,24 @@ const Education = () => {
               <div className="p-3 rounded-lg bg-primary/10 text-primary">
                 <GraduationCap size={24} />
               </div>
-              <h3 className="text-xl font-bold">Education</h3>
+              <h3 className="text-xl font-bold">{t("education")}</h3>
             </div>
 
             <div className="border-l-2 border-primary pl-6">
-              <h4 className="font-semibold text-lg">{education.degree}</h4>
-              <p className="text-muted-foreground">{education.institution}</p>
+              <h4 className="font-semibold text-lg">{t("degree")}</h4>
+              <p className="text-muted-foreground">{t("institution")}</p>
               <p className="text-sm text-muted-foreground mt-1">
-                {education.location}
+                {t("location")}
               </p>
+            </div>
+
+            <h4 className="font-semibold mt-8 mb-3">{t("languages")}</h4>
+            <div className="flex flex-wrap gap-2">
+              {languages.map((language) => (
+                <span key={language} className="skill-chip">
+                  {language}
+                </span>
+              ))}
             </div>
           </motion.div>
 
@@ -71,7 +68,7 @@ const Education = () => {
               <div className="p-3 rounded-lg bg-primary/10 text-primary">
                 <Award size={24} />
               </div>
-              <h3 className="text-xl font-bold">Certifications</h3>
+              <h3 className="text-xl font-bold">{t("certifications")}</h3>
             </div>
 
             <ul className="space-y-3">

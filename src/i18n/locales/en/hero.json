@@ -1,0 +1,8 @@
+{
+  "greeting": "Hi, my name is",
+  "name": "Gazmor Abdiu.",
+  "tagline": "I build scalable systems.",
+  "intro": "Full-Stack Software Developer specializing in building high-performance backend systems and modern full-stack applications with <primary>Node.js</primary>, <primary>NestJS</primary>, and <primary>React</primary>.",
+  "viewProjects": "View Projects",
+  "contactMe": "Contact Me"
+}

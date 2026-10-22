@@ -1,0 +1,51 @@
+{
+  "title": "Projects",
+  "visit": "Visit website",
+  "ndaNote": "Under NDA",
+  "status": {
+    "live": "Live",
+    "inProgress": "In progress"
+  },
+  "items": {
+    "festsnap": {
+      "title": "Festsnap",
+      "description": "A full-stack SaaS platform that lets event guests contribute photos to a shared gallery through a simple upload form, giving event owners a centralized, privacy-protected collection of every moment.",
+      "highlights": [
+        "Dual onboarding: self-serve signup with a free trial, plus a B2B flow for venues to provision events on behalf of clients",
+        "Owner-centric gallery: bulk download, album organization and one-click PDF export",
+        "Privacy-first: uploaded images are visible only to the event owner",
+        "Scalable media pipeline: decoupled microservices process images asynchronously, load-tested to 1,000 uploads/second on a 4GB RAM server"
+      ]
+    },
+    "valleyFestival": {
+      "title": "Valley Film Festival",
+      "description": "The official multi-language website of an international film festival in the Presevo Valley, serving as the event's public program and archive hub.",
+      "highlights": [
+        "Full site in English, Albanian and Serbian with locale-based routing",
+        "Film lineup with metadata and a day-by-day schedule filterable by venue and event type",
+        "Guest showcase, event gallery and partners sections",
+        "Content-driven architecture with reusable templates for year-over-year editions"
+      ]
+    },
+    "aiQuiz": {
+      "title": "AI Quiz Generator",
+      "description": "An AI-powered platform that creates quizzes on demand from any topic or text, using the OpenAI API to generate questions, answer options and explanations.",
+      "highlights": [
+        "Real-time mode: generates questions on the fly during a live session",
+        "Standard mode: generates a complete quiz set upfront for self-paced taking"
+      ]
+    },
+    "trackDay": {
+      "title": "Track Day Manager",
+      "description": "A web application for managing track day activities."
+    },
+    "wedding": {
+      "title": "Wedding Invitation Website",
+      "description": "A wedding invitation website with an RSVP system and guest management."
+    },
+    "stock": {
+      "title": "Stock Management System",
+      "description": "A stock management system for tracking inventory."
+    }
+  }
+}

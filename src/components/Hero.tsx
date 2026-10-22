@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
+import { richText } from "@/i18n/richText";
 import { Github, Linkedin, Mail, ArrowDown, FileDown } from "lucide-react";
 
 const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -7,6 +9,8 @@ const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => 
 };
 
 const Hero = () => {
+  const { t } = useTranslation("hero");
+  const { t: tc } = useTranslation("common");
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
@@ -40,7 +44,7 @@ const Hero = () => {
             transition={{ delay: 0.2 }}
             className="text-primary font-mono mb-5 text-lg"
           >
-            Hi, my name is
+            {t("greeting")}
           </motion.p>
 
           <motion.h1
@@ -49,7 +53,7 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
             className="text-5xl md:text-7xl font-bold mb-4"
           >
-            Gazmor Abdiu.
+            {t("name")}
           </motion.h1>
 
           <motion.h2
@@ -58,7 +62,7 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
             className="text-4xl md:text-6xl font-bold text-muted-foreground mb-6"
           >
-            I build scalable systems.
+            {t("tagline")}
           </motion.h2>
 
           <motion.p
@@ -67,11 +71,7 @@ const Hero = () => {
             transition={{ delay: 0.5 }}
             className="text-muted-foreground text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
           >
-            Full-Stack Software Developer specializing in building high-performance 
-            backend systems and modern full-stack applications with{" "}
-            <span className="text-primary">Node.js</span>,{" "}
-            <span className="text-primary">NestJS</span>, and{" "}
-            <span className="text-primary">React</span>.
+            <Trans t={t} i18nKey="intro" components={richText} />
           </motion.p>
 
           <motion.div
@@ -85,14 +85,14 @@ const Hero = () => {
               onClick={(e) => scrollToSection(e, "projects")}
               className="px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-all duration-300 glow-effect"
             >
-              View Projects
+              {t("viewProjects")}
             </a>
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "contact")}
               className="px-8 py-4 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition-all duration-300"
             >
-              Contact Me
+              {t("contactMe")}
             </a>
             <a
               href="/resume.pdf"
@@ -100,7 +100,7 @@ const Hero = () => {
               className="px-8 py-4 border border-primary text-primary rounded-md font-medium hover:bg-primary/10 transition-all duration-300 inline-flex items-center gap-2"
             >
               <FileDown size={18} />
-              Resume
+              {tc("resume")}
             </a>
           </motion.div>
 

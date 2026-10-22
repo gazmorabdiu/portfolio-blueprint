@@ -1,0 +1,18 @@
+{
+  "title": "Skills & Technologies",
+  "categories": {
+    "coreStack": "Core Stack",
+    "backend": "Backend",
+    "architecture": "Architecture",
+    "frontend": "Frontend",
+    "tools": "Tools & Systems",
+    "softSkills": "Soft Skills"
+  },
+  "soft": {
+    "adaptive": "Adaptive",
+    "problemSolver": "Problem Solver",
+    "teamPlayer": "Team Player",
+    "communicator": "Effective Communicator",
+    "quickLearner": "Quick Learner"
+  }
+}

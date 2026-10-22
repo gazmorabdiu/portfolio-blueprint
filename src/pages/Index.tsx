@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import FeaturedProjects from "@/components/FeaturedProjects";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const { t } = useTranslation("common");
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -32,6 +35,7 @@ const Index = () => {
         <About />
         <Skills />
         <Experience />
+        <FeaturedProjects />
         <Projects />
         <Education />
         <Contact />
@@ -47,7 +51,7 @@ const Index = () => {
             transition={{ duration: 0.2 }}
             onClick={scrollToTop}
             className="fixed right-6 bottom-8 z-40 p-3 rounded-full border border-border bg-background/90 backdrop-blur-sm text-foreground hover:text-primary hover:border-primary shadow-lg transition-colors"
-            aria-label="Scroll to top"
+            aria-label={t("scrollToTop")}
           >
             <ArrowUp size={24} />
           </motion.button>

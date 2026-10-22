@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+  { key: "about", href: "#about" },
+  { key: "skills", href: "#skills" },
+  { key: "experience", href: "#experience" },
+  { key: "projects", href: "#projects" },
+  { key: "contact", href: "#contact" },
+] as const;
 
 const Navbar = () => {
+  const { t } = useTranslation("navbar");
+  const { t: tc } = useTranslation("common");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -70,7 +74,7 @@ const Navbar = () => {
                 onClick={(e) => scrollToSection(e, link.href)}
                 className="nav-link font-mono text-sm"
               >
-                <span className="text-primary">0{i + 1}.</span> {link.label}
+                <span className="text-primary">0{i + 1}.</span> {t(`links.${link.key}`)}
               </a>
             </motion.li>
           ))}
@@ -84,13 +88,21 @@ const Navbar = () => {
               download="Gazmor-Abdiu-Resume.pdf"
               className="px-4 py-2 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors font-mono text-sm"
             >
-              Resume
+              {tc("resume")}
             </a>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <LanguageSwitcher />
           </motion.li>
         </ul>
 
         {/* Mobile Menu Button */}
         <button
+          aria-label="Menu"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden text-foreground p-2"
         >
@@ -115,7 +127,7 @@ const Navbar = () => {
                     onClick={(e) => scrollToSection(e, link.href)}
                     className="nav-link font-mono text-lg"
                   >
-                    <span className="text-primary">0{i + 1}.</span> {link.label}
+                    <span className="text-primary">0{i + 1}.</span> {t(`links.${link.key}`)}
                   </a>
                 </li>
               ))}
@@ -125,8 +137,11 @@ const Navbar = () => {
                   download="Gazmor-Abdiu-Resume.pdf"
                   className="px-6 py-3 rounded-md border border-primary text-primary hover:bg-primary/10 transition-colors font-mono"
                 >
-                  Resume
+                  {tc("resume")}
                 </a>
+              </li>
+              <li>
+                <LanguageSwitcher />
               </li>
             </ul>
           </motion.div>

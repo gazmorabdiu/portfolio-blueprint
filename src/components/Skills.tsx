@@ -1,43 +1,46 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Database, Server, Cloud, Cpu, Users } from "lucide-react";
-import { ProgrammingLanguages, SoftSkills, Technologies } from "@/lib/enums";
+import { useTranslation } from "react-i18next";
+import { Code, Database, Server, Cloud, Layout, Users } from "lucide-react";
 
+// Skill names stay in English; `soft` categories are translated via the "soft" keys.
 const skillCategories = [
   {
-    title: "Programming",
+    id: "coreStack",
     icon: Code,
-    skills: [ProgrammingLanguages.JavaScript, ProgrammingLanguages.TypeScript, ProgrammingLanguages.Ruby, ProgrammingLanguages.Java, ProgrammingLanguages.Python],
+    skills: ["Ruby", "Ruby on Rails", "React", "JavaScript", "TypeScript"],
   },
   {
-    title: "Frameworks",
-    icon: Cpu,
-    skills: [ProgrammingLanguages.Node, ProgrammingLanguages.Nest, ProgrammingLanguages.React, ProgrammingLanguages.Express, ProgrammingLanguages.Ruby, ProgrammingLanguages.Rails],
-  },
-  {
-    title: "Databases",
+    id: "backend",
     icon: Database,
-    skills: [Technologies.MongoDB, Technologies.MySQL, Technologies.PostgreSQL, Technologies.SQLite, Technologies.Redis],
+    skills: ["Rails (controllers, REST APIs, RSpec)", "Node.js", "NestJS", "PostgreSQL", "MySQL", "MongoDB", "Redis"],
   },
   {
-    title: "Infrastructure",
-    icon: Cloud,
-    skills: [Technologies.Docker, Technologies.AWS, Technologies.Git, Technologies.NATS, Technologies.RESTAPI, Technologies.GraphQL],
-  },
-  {
-    title: "Architecture",
+    id: "architecture",
     icon: Server,
-    skills: [Technologies.Microservices, Technologies.WebSockets, Technologies.ScalableSystems, Technologies.CleanArchitecture],
+    skills: ["GraphQL", "Sockets", "Microservices", "REST API"],
   },
   {
-    title: "Soft Skills",
+    id: "frontend",
+    icon: Layout,
+    skills: ["React", "React Hook Form", "Context API", "Component architecture"],
+  },
+  {
+    id: "tools",
+    icon: Cloud,
+    skills: ["Git", "Docker", "CI/CD", "AWS (S3, Personalize)", "NATS"],
+  },
+  {
+    id: "softSkills",
     icon: Users,
-    skills: [SoftSkills.ProblemSolving, SoftSkills.TeamCollaboration, SoftSkills.Communication, SoftSkills.QuickLearner],
+    soft: true,
+    skills: ["adaptive", "problemSolver", "teamPlayer", "communicator", "quickLearner"],
   },
 ];
 
 const Skills = () => {
+  const { t } = useTranslation("skills");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -61,7 +64,7 @@ const Skills = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="section-title">Skills & Technologies</h2>
+        <h2 className="section-title">{t("title")}</h2>
 
         <motion.div
           variants={containerVariants}
@@ -71,7 +74,7 @@ const Skills = () => {
         >
           {skillCategories.map((category) => (
             <motion.div
-              key={category.title}
+              key={category.id}
               variants={itemVariants}
               className="glass-card p-6 hover:border-primary/30 transition-all duration-300 group"
             >
@@ -79,12 +82,12 @@ const Skills = () => {
                 <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                   <category.icon size={20} />
                 </div>
-                <h3 className="font-semibold text-lg">{category.title}</h3>
+                <h3 className="font-semibold text-lg">{t(`categories.${category.id}`)}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span key={skill} className="skill-chip">
-                    {skill}
+                    {category.soft ? t(`soft.${skill}`) : skill}
                   </span>
                 ))}
               </div>

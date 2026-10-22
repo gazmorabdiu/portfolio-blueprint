@@ -1,0 +1,7 @@
+{
+  "title": "About Me",
+  "photoAlt": "Gazmor Abdiu",
+  "p1": "Full-stack developer with almost 5 years of experience shipping products real customers use. Currently working across <primary>React</primary> and <primary>Ruby on Rails</primary> on a client engagement with <primary>Revealdata</primary>, building document review, search, and export features.",
+  "p2": "I've also taken several products solo from <fg>architecture to production</fg>, including a multi-tenant SaaS platform, an AI quiz generator on the OpenAI API, and event/photo apps with high-throughput image pipelines (one load-tested to 1,000 uploads/second on minimal infrastructure).",
+  "p3": "My backend experience spans <fg>Node.js, NestJS, GraphQL, PostgreSQL, MongoDB, Redis and Docker</fg>. I'm deepening my Rails skills through structured TDD/RSpec coursework, and I use AI tools daily while staying fully accountable for reviewing and validating what they produce."
+}

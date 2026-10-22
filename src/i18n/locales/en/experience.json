@@ -1,0 +1,63 @@
+{
+  "title": "Experience",
+  "items": [
+    {
+      "role": "Full Stack Engineer (Ruby on Rails + React)",
+      "location": "Remote",
+      "period": "12/2024 – Present",
+      "description": [
+        "Building and maintaining core features of an eDiscovery and legal holds platform: document review, search and export",
+        "Contributing to a high-impact legal tech product used across international markets",
+        "Collaborating closely with cross-functional teams to ensure smooth integration and delivery",
+        "Deliberately expanding into Ruby on Rails (TDD/RSpec), GraphQL and Docker through applied project work",
+        "Exploring AI-assisted development tools and workflows to improve code quality and delivery speed"
+      ]
+    },
+    {
+      "role": "Software Developer",
+      "location": "Prishtina, Kosovo · Remote",
+      "period": "04/2024 – 04/2025",
+      "description": [
+        "Led initiatives to optimize our microservices architecture, improving efficiency and scalability",
+        "Developed scalable microservices with NATS for low-latency messaging",
+        "Created an in-memory storage solution that tripled performance",
+        "Built a refund feature to improve user trust and transparency",
+        "Enhanced data handling and caching with Redis, SQLite and MySQL",
+        "Mentored interns; moved to part-time in 2025 to ensure a smooth knowledge transfer"
+      ]
+    },
+    {
+      "role": "Software Developer",
+      "location": "Prishtina, Kosovo",
+      "period": "11/2022 – 03/2024",
+      "description": [
+        "Led backend initiatives with Node.js and NestJS to improve performance and scalability",
+        "Implemented Amazon S3 file storage and Amazon Personalize for tailored video recommendations",
+        "Managed data with MongoDB and Prisma; built real-time user and group chat with Socket.io",
+        "Led backend database design and use cases for legal case management",
+        "Created API documentation with Swagger and mentored junior developers"
+      ]
+    },
+    {
+      "role": "Freelance Node.js Developer",
+      "location": "Remote",
+      "period": "2021 – 2022",
+      "description": [
+        "Built backend services and REST APIs with Node.js and Express for independent clients",
+        "Designed databases with MongoDB and PostgreSQL",
+        "Delivered projects end to end, from requirements and architecture to deployment"
+      ]
+    },
+    {
+      "role": "Intern Web Developer",
+      "location": "Remote",
+      "period": "2021 · 3 months",
+      "description": [
+        "Three-month online internship focused on web development with Laravel and React",
+        "Developed web applications using the PHP Laravel framework",
+        "Worked on responsive design and user experience",
+        "Collaborated with the development team to deliver projects on time"
+      ]
+    }
+  ]
+}

@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslation, Trans } from "react-i18next";
+import { richText } from "@/i18n/richText";
 
 const About = () => {
+  const { t } = useTranslation("about");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -13,35 +16,20 @@ const About = () => {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="section-title">About Me</h2>
+        <h2 className="section-title">{t("title")}</h2>
 
         <div className="grid md:grid-cols-3 gap-12 mt-12">
           <div className="md:col-span-2 space-y-6">
             <p className="text-muted-foreground text-lg leading-relaxed">
-              I'm a passionate software developer with a strong focus on{" "}
-              <span className="text-foreground">backend development</span> and{" "}
-              <span className="text-foreground">scalable architectures</span>.
-              Currently working as a Full Stack Developer at{" "}
-              <span className="text-primary">Revealdata</span>, building legal
-              tech solutions with Ruby on Rails and React.
+              <Trans t={t} i18nKey="p1" components={richText} />
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed">
-              My experience spans designing and implementing{" "}
-              <span className="text-foreground">
-                microservices architectures
-              </span>
-              , optimizing performance with in-memory storage solutions, and
-              building real-time communication systems. I thrive on solving
-              complex problems and delivering clean, maintainable code.
+              <Trans t={t} i18nKey="p2" components={richText} />
             </p>
 
             <p className="text-muted-foreground text-lg leading-relaxed">
-              When I'm not coding, I'm constantly learning new technologies and
-              exploring better ways to architect software systems. Currently
-              deepening my expertise in{" "}
-              <span className="text-primary">React</span> and{" "}
-              <span className="text-primary">Ruby on Rails</span>.
+              <Trans t={t} i18nKey="p3" components={richText} />
             </p>
           </div>
 
@@ -56,7 +44,7 @@ const About = () => {
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-transparent flex items-center justify-center">
                   <img
                     src="/Gazi.jpeg"
-                    alt="Gazi"
+                    alt={t("photoAlt")}
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -25,48 +25,44 @@ import {
 import { ChevronDown } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/lib/email";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 
-const SUBJECT_OPTIONS = [
-  { value: "web-developer", label: "Web Developer opportunity" },
-  { value: "project", label: "Project collaboration" },
-  { value: "freelance", label: "Freelance work" },
-  { value: "general", label: "General inquiry" },
-  { value: "other", label: "Other" },
-] as const;
+const SUBJECT_VALUES = ["web-developer", "project", "freelance", "general", "other"] as const;
 
-const contactSchema = z
-  .object({
-    email: z
-      .string()
-      .trim()
-      .email("Please enter a valid email address")
-      .max(255),
-    subjectType: z.string().min(1, "Please select a subject"),
-    subjectCustom: z.string().trim().max(200).optional(),
-    message: z
-      .string()
-      .trim()
-      .min(1, "Message is required")
-      .max(2000, "Message must be less than 2000 characters"),
-  })
-  .refine(
-    (data) =>
-      data.subjectType !== "other" ||
-      (data.subjectCustom?.trim()?.length ?? 0) > 0,
-    {
-      message: "Please write your subject",
-      path: ["subjectCustom"],
-    }
-  );
+const createContactSchema = (t: TFunction<"contact">) =>
+  z
+    .object({
+      email: z.string().trim().email(t("validation.email")).max(255),
+      subjectType: z.string().min(1, t("validation.subject")),
+      subjectCustom: z.string().trim().max(200).optional(),
+      message: z
+        .string()
+        .trim()
+        .min(1, t("validation.messageRequired"))
+        .max(2000, t("validation.messageMax")),
+    })
+    .refine(
+      (data) =>
+        data.subjectType !== "other" ||
+        (data.subjectCustom?.trim()?.length ?? 0) > 0,
+      {
+        message: t("validation.customSubject"),
+        path: ["subjectCustom"],
+      }
+    );
 
-type ContactFormValues = z.infer<typeof contactSchema>;
+type ContactFormValues = z.infer<ReturnType<typeof createContactSchema>>;
 
 const Contact = () => {
+  const { t } = useTranslation("contact");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const [isSending, setIsSending] = useState(false);
+
+  const contactSchema = useMemo(() => createContactSchema(t), [t]);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -85,8 +81,7 @@ const Contact = () => {
     const subject =
       data.subjectType === "other"
         ? data.subjectCustom?.trim() ?? ""
-        : SUBJECT_OPTIONS.find((o) => o.value === data.subjectType)?.label ??
-          data.subjectType;
+        : t(`subjects.${data.subjectType}`, { defaultValue: data.subjectType });
     setIsSending(true);
     try {
       await sendContactEmail({
@@ -95,8 +90,8 @@ const Contact = () => {
         message: data.message,
       });
       toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        title: t("toast.successTitle"),
+        description: t("toast.successDescription"),
       });
       form.reset({
         email: "",
@@ -106,11 +101,9 @@ const Contact = () => {
       });
     } catch (err) {
       toast({
-        title: "Failed to send",
+        title: t("toast.errorTitle"),
         description:
-          err instanceof Error
-            ? err.message
-            : "Something went wrong. Try again.",
+          err instanceof Error ? err.message : t("toast.errorFallback"),
         variant: "destructive",
       });
     } finally {
@@ -126,13 +119,11 @@ const Contact = () => {
         transition={{ duration: 0.6 }}
         className="text-center max-w-2xl mx-auto"
       >
-        <p className="text-primary font-mono mb-4">04. What's Next?</p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+        <p className="text-primary font-mono mb-4">{t("eyebrow")}</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6">{t("title")}</h2>
 
         <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
-          I'm currently open to new opportunities and always excited to discuss
-          interesting projects. Whether you have a question or just want to say
-          hi, feel free to reach out!
+          {t("intro")}
         </p>
 
         <motion.div
@@ -150,9 +141,9 @@ const Contact = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>{t("labels.email")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="your@email.com" {...field} />
+                      <Input placeholder={t("placeholders.email")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -163,7 +154,7 @@ const Contact = () => {
                 name="subjectType"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Subject</FormLabel>
+                    <FormLabel>{t("labels.subject")}</FormLabel>
                     <DropdownMenu modal={false}>
                       <FormControl>
                         <DropdownMenuTrigger asChild>
@@ -173,20 +164,20 @@ const Contact = () => {
                           >
                             <span className={field.value ? "" : "text-muted-foreground"}>
                               {field.value
-                                ? SUBJECT_OPTIONS.find((o) => o.value === field.value)?.label
-                                : "What's this about?"}
+                                ? t(`subjects.${field.value}`)
+                                : t("placeholders.subject")}
                             </span>
                             <ChevronDown className="h-4 w-4 opacity-50" />
                           </button>
                         </DropdownMenuTrigger>
                       </FormControl>
                       <DropdownMenuContent align="start" className="min-w-[var(--radix-dropdown-menu-trigger-width)]">
-                        {SUBJECT_OPTIONS.map((opt) => (
+                        {SUBJECT_VALUES.map((value) => (
                           <DropdownMenuItem
-                            key={opt.value}
-                            onSelect={() => field.onChange(opt.value)}
+                            key={value}
+                            onSelect={() => field.onChange(value)}
                           >
-                            {opt.label}
+                            {t(`subjects.${value}`)}
                           </DropdownMenuItem>
                         ))}
                       </DropdownMenuContent>
@@ -201,9 +192,9 @@ const Contact = () => {
                   name="subjectCustom"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Your subject</FormLabel>
+                      <FormLabel>{t("labels.customSubject")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Write your subject..." {...field} />
+                        <Input placeholder={t("placeholders.customSubject")} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -215,10 +206,10 @@ const Contact = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>{t("labels.message")}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Write your message here..."
+                        placeholder={t("placeholders.message")}
                         rows={6}
                         {...field}
                       />
@@ -234,7 +225,7 @@ const Contact = () => {
                 disabled={isSending}
               >
                 <Send size={18} />
-                {isSending ? "Sending..." : "Send Message"}
+                {isSending ? t("sending") : t("send")}
               </Button>
             </form>
           </Form>
@@ -255,7 +246,7 @@ const Contact = () => {
           </a>
           <span className="flex items-center gap-2 text-muted-foreground">
             <MapPin size={18} />
-            <span className="text-sm">Pristina, Kosovo</span>
+            <span className="text-sm">{t("location")}</span>
           </span>
         </motion.div>
 

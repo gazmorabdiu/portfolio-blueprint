@@ -1,0 +1,40 @@
+{
+  "eyebrow": "04. Çfarë vijon?",
+  "title": "Më kontaktoni",
+  "intro": "Aktualisht jam i hapur për mundësi të reja dhe gjithmonë i gatshëm të diskutoj projekte interesante. Qoftë për një pyetje apo thjesht për një përshëndetje, mos hezitoni të më shkruani!",
+  "labels": {
+    "email": "Email",
+    "subject": "Subjekti",
+    "customSubject": "Subjekti juaj",
+    "message": "Mesazhi"
+  },
+  "placeholders": {
+    "email": "email@juaj.com",
+    "subject": "Për çfarë bëhet fjalë?",
+    "customSubject": "Shkruani subjektin...",
+    "message": "Shkruani mesazhin tuaj këtu..."
+  },
+  "subjects": {
+    "web-developer": "Mundësi pune si Web Developer",
+    "project": "Bashkëpunim në projekt",
+    "freelance": "Punë freelance",
+    "general": "Pyetje e përgjithshme",
+    "other": "Tjetër"
+  },
+  "validation": {
+    "email": "Ju lutem shkruani një adresë email-i të vlefshme",
+    "subject": "Ju lutem zgjidhni një subjekt",
+    "customSubject": "Ju lutem shkruani subjektin",
+    "messageRequired": "Mesazhi është i detyrueshëm",
+    "messageMax": "Mesazhi duhet të ketë më pak se 2000 karaktere"
+  },
+  "send": "Dërgo mesazhin",
+  "sending": "Duke dërguar...",
+  "toast": {
+    "successTitle": "Mesazhi u dërgua!",
+    "successDescription": "Faleminderit që më kontaktuat. Do t'ju përgjigjem sa më shpejt.",
+    "errorTitle": "Dërgimi dështoi",
+    "errorFallback": "Diçka shkoi keq. Provoni përsëri."
+  },
+  "location": "Prishtinë, Kosovë"
+}

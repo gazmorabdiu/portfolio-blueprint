@@ -1,0 +1,10 @@
+{
+  "resume": "Resume",
+  "scrollToTop": "Scroll to top",
+  "language": "Language",
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "home": "Return to Home"
+  }
+}

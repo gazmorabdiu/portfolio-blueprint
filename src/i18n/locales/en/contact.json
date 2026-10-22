@@ -1,0 +1,40 @@
+{
+  "eyebrow": "04. What's Next?",
+  "title": "Get In Touch",
+  "intro": "I'm currently open to new opportunities and always excited to discuss interesting projects. Whether you have a question or just want to say hi, feel free to reach out!",
+  "labels": {
+    "email": "Email",
+    "subject": "Subject",
+    "customSubject": "Your subject",
+    "message": "Message"
+  },
+  "placeholders": {
+    "email": "your@email.com",
+    "subject": "What's this about?",
+    "customSubject": "Write your subject...",
+    "message": "Write your message here..."
+  },
+  "subjects": {
+    "web-developer": "Web Developer opportunity",
+    "project": "Project collaboration",
+    "freelance": "Freelance work",
+    "general": "General inquiry",
+    "other": "Other"
+  },
+  "validation": {
+    "email": "Please enter a valid email address",
+    "subject": "Please select a subject",
+    "customSubject": "Please write your subject",
+    "messageRequired": "Message is required",
+    "messageMax": "Message must be less than 2000 characters"
+  },
+  "send": "Send Message",
+  "sending": "Sending...",
+  "toast": {
+    "successTitle": "Message sent!",
+    "successDescription": "Thanks for reaching out. I'll get back to you soon.",
+    "errorTitle": "Failed to send",
+    "errorFallback": "Something went wrong. Try again."
+  },
+  "location": "Pristina, Kosovo"
+}

@@ -1,0 +1,25 @@
+{
+  "title": "Key Achievements",
+  "items": {
+    "performance": {
+      "title": "Backend Performance",
+      "description": "Improved backend performance by 3x through optimized in-memory data handling, with better data access patterns and caching strategies.",
+      "impact": "3x Performance Boost"
+    },
+    "refund": {
+      "title": "Refund Feature",
+      "description": "Delivered a production-ready refund feature that improved user trust and system transparency.",
+      "impact": "Enhanced Transparency"
+    },
+    "apis": {
+      "title": "Production APIs",
+      "description": "Built and maintained scalable APIs used in live production environments.",
+      "impact": "Live in Production"
+    },
+    "apiDocs": {
+      "title": "Documentation & Architecture",
+      "description": "Increased development efficiency through clear API documentation and structured architecture.",
+      "impact": "Faster Onboarding"
+    }
+  }
+}

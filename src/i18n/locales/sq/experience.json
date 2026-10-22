@@ -1,0 +1,63 @@
+{
+  "title": "Përvoja",
+  "items": [
+    {
+      "role": "Full Stack Engineer (Ruby on Rails + React)",
+      "location": "Në distancë",
+      "period": "12/2024 – Tani",
+      "description": [
+        "Ndërtoj dhe mirëmbaj funksionalitetet kryesore të një platforme eDiscovery dhe legal holds: shqyrtim dokumentesh, kërkim dhe eksport",
+        "Kontribuoj në një produkt legal tech me ndikim të lartë, që përdoret në tregje ndërkombëtare",
+        "Bashkëpunoj ngushtë me ekipe ndërfunksionale për integrim dhe dorëzim pa probleme",
+        "Po zgjerohem me qëllim në Ruby on Rails (TDD/RSpec), GraphQL dhe Docker përmes projekteve praktike",
+        "Eksploroj mjete dhe rrjedha pune të zhvillimit me ndihmën e AI për të përmirësuar cilësinë e kodit dhe shpejtësinë e dorëzimit"
+      ]
+    },
+    {
+      "role": "Zhvillues Software",
+      "location": "Prishtinë, Kosovë · Në distancë",
+      "period": "04/2024 – 04/2025",
+      "description": [
+        "Udhëhoqa iniciativa për optimizimin e arkitekturës së mikroshërbimeve, duke përmirësuar efikasitetin dhe shkallëzueshmërinë",
+        "Zhvillova mikroshërbime të shkallëzueshme me NATS për mesazhe me vonesë të ulët",
+        "Krijova një zgjidhje ruajtjeje në memorie që e trefishoi performancën",
+        "Ndërtova funksionalitetin e rimbursimeve për të rritur besimin dhe transparencën e përdoruesve",
+        "Përmirësova menaxhimin e të dhënave dhe cache-in me Redis, SQLite dhe MySQL",
+        "Mentorova praktikantë; në 2025 kalova në kohë të pjesshme për një transferim të qetë të njohurive"
+      ]
+    },
+    {
+      "role": "Zhvillues Software",
+      "location": "Prishtinë, Kosovë",
+      "period": "11/2022 – 03/2024",
+      "description": [
+        "Udhëhoqa iniciativat backend me Node.js dhe NestJS për performancë dhe shkallëzueshmëri më të mirë",
+        "Implementova ruajtjen e skedarëve në Amazon S3 dhe Amazon Personalize për rekomandime të personalizuara videosh",
+        "Menaxhova të dhënat me MongoDB dhe Prisma; ndërtova chat në kohë reale individual dhe grupor me Socket.io",
+        "Udhëhoqa dizajnin e bazës së të dhënave dhe rastet e përdorimit për menaxhimin e rasteve ligjore",
+        "Krijova dokumentim të API-ve me Swagger dhe mentorova zhvillues junior"
+      ]
+    },
+    {
+      "role": "Zhvillues Node.js Freelance",
+      "location": "Në distancë",
+      "period": "2021 – 2022",
+      "description": [
+        "Ndërtova shërbime backend dhe REST API me Node.js dhe Express për klientë të pavarur",
+        "Projektova baza të dhënash me MongoDB dhe PostgreSQL",
+        "Dorëzova projekte nga fillimi në fund, nga kërkesat dhe arkitektura deri te publikimi"
+      ]
+    },
+    {
+      "role": "Praktikant Zhvillues Web",
+      "location": "Në distancë",
+      "period": "2021 · 3 muaj",
+      "description": [
+        "Praktikë tremujore online me fokus në zhvillimin web me Laravel dhe React",
+        "Zhvillova aplikacione web me framework-un PHP Laravel",
+        "Punova në dizajn responsiv dhe përvojën e përdoruesit",
+        "Bashkëpunova me ekipin e zhvillimit për dorëzimin e projekteve në kohë"
+      ]
+    }
+  ]
+}

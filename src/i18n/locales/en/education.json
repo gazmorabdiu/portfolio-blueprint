@@ -1,0 +1,20 @@
+{
+  "title": "Education & Certifications",
+  "education": "Education",
+  "certifications": "Certifications",
+  "languages": "Languages",
+  "degree": "Bachelor of Computer Engineering",
+  "institution": "Ondokuz Mayis University",
+  "location": "Samsun, Turkey · 2016 – 2020",
+  "certs": [
+    "Ruby on Rails (Udemy, 2025)",
+    "Learn to Code with Ruby (Udemy, 08/2025)",
+    "Docker Fundamentals (Udemy, 2025)",
+    "GraphQL (Udemy, 12/2025)",
+    "AI Tools for Developers (Udemy, Frontend Masters, 2025)",
+    "ReactJS Development (Innovation Center Kosovo, 04/2024)",
+    "The Ultimate MySQL Bootcamp (Udemy, 03/2024)",
+    "Node.js, Express, MongoDB & More (Udemy, 12/2022)"
+  ],
+  "langs": ["Albanian", "English", "Turkish"]
+}

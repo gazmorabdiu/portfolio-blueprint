@@ -1,0 +1,25 @@
+{
+  "title": "Arritjet kryesore",
+  "items": {
+    "performance": {
+      "title": "Performanca e backend-it",
+      "description": "Përmirësova performancën e backend-it 3 herë përmes menaxhimit të optimizuar të të dhënave në memorie, me qasje dhe strategji cache-i më të mira.",
+      "impact": "Performancë 3x më e lartë"
+    },
+    "refund": {
+      "title": "Funksionaliteti i rimbursimeve",
+      "description": "Dorëzova një funksionalitet rimbursimesh gati për prodhim, që rriti besimin e përdoruesve dhe transparencën e sistemit.",
+      "impact": "Transparencë e shtuar"
+    },
+    "apis": {
+      "title": "API në prodhim",
+      "description": "Ndërtova dhe mirëmbajta API të shkallëzueshme që përdoren në ambiente prodhimi aktive.",
+      "impact": "Në prodhim"
+    },
+    "apiDocs": {
+      "title": "Dokumentim & arkitekturë",
+      "description": "Rrita efikasitetin e zhvillimit përmes dokumentimit të qartë të API-ve dhe arkitekturës së strukturuar.",
+      "impact": "Integrim më i shpejtë"
+    }
+  }
+}

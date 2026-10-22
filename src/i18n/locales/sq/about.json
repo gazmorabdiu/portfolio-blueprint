@@ -1,0 +1,7 @@
+{
+  "title": "Rreth meje",
+  "photoAlt": "Gazmor Abdiu",
+  "p1": "Zhvillues full-stack me gati 5 vjet përvojë në dorëzimin e produkteve që i përdorin klientë realë. Aktualisht punoj me <primary>React</primary> dhe <primary>Ruby on Rails</primary> në një bashkëpunim me klientin <primary>Revealdata</primary>, ku ndërtoj funksionalitete për shqyrtim dokumentesh, kërkim dhe eksport.",
+  "p2": "Kam ndërtuar edhe disa produkte vetëm, <fg>nga arkitektura deri në prodhim</fg>, përfshirë një platformë SaaS multi-tenant, një gjenerues kuizesh me AI mbi OpenAI API dhe aplikacione për evente/foto me pipeline imazhesh me kapacitet të lartë (njëri i testuar deri në 1,000 ngarkime/sekondë me infrastrukturë minimale).",
+  "p3": "Përvoja ime backend përfshin <fg>Node.js, NestJS, GraphQL, PostgreSQL, MongoDB, Redis dhe Docker</fg>. Po thellohem në Rails përmes kurseve të strukturuara TDD/RSpec, dhe përdor mjete AI çdo ditë, duke mbetur plotësisht përgjegjës për shqyrtimin dhe vlerësimin e asaj që prodhojnë."
+}

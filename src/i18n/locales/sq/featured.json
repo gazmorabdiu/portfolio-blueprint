@@ -1,0 +1,51 @@
+{
+  "title": "Projektet",
+  "visit": "Vizito faqen",
+  "ndaNote": "Nën NDA",
+  "status": {
+    "live": "Aktiv",
+    "inProgress": "Në zhvillim"
+  },
+  "items": {
+    "festsnap": {
+      "title": "Festsnap",
+      "description": "Një platformë SaaS full-stack që u lejon të ftuarve të një eventi të shtojnë foto në një galeri të përbashkët përmes një formulari të thjeshtë, duke i dhënë organizatorit një koleksion të centralizuar dhe të mbrojtur të çdo momenti.",
+      "highlights": [
+        "Dy rrugë regjistrimi: vetë-regjistrim me periudhë prove falas, plus një rrjedhë B2B për lokalet që krijojnë evente në emër të klientëve",
+        "Galeri e fokusuar te organizatori: shkarkim në masë, organizim albumesh dhe eksport PDF me një klik",
+        "Privatësia në radhë të parë: fotot e ngarkuara janë të dukshme vetëm për organizatorin e eventit",
+        "Pipeline i shkallëzueshëm për media: mikroshërbime të ndara përpunojnë imazhet në mënyrë asinkrone, të testuara deri në 1,000 ngarkime/sekondë në një server me 4GB RAM"
+      ]
+    },
+    "valleyFestival": {
+      "title": "Valley Film Festival",
+      "description": "Faqja zyrtare shumëgjuhëshe e një festivali ndërkombëtar filmi në Luginën e Preshevës, që shërben si qendër publike e programit dhe arkivit të eventit.",
+      "highlights": [
+        "Faqja e plotë në anglisht, shqip dhe serbisht me routing sipas gjuhës",
+        "Lista e filmave me metadata dhe orar ditë pas dite, i filtrueshëm sipas vendit dhe llojit të eventit",
+        "Seksione për të ftuarit, galerinë e eventit dhe partnerët",
+        "Arkitekturë e drejtuar nga përmbajtja, me shabllone të ripërdorshme për edicionet vjetore"
+      ]
+    },
+    "aiQuiz": {
+      "title": "AI Quiz Generator",
+      "description": "Një platformë me AI që krijon kuize sipas kërkesës nga çdo temë ose tekst, duke përdorur OpenAI API për pyetje, opsione përgjigjesh dhe shpjegime.",
+      "highlights": [
+        "Modaliteti në kohë reale: gjeneron pyetje menjëherë gjatë një sesioni live",
+        "Modaliteti standard: gjeneron një set të plotë kuizi paraprakisht për zgjidhje në ritmin e vet"
+      ]
+    },
+    "trackDay": {
+      "title": "Track Day Manager",
+      "description": "Një aplikacion web për menaxhimin e aktiviteteve të track day."
+    },
+    "wedding": {
+      "title": "Faqe ftese dasme",
+      "description": "Një faqe ftese për dasma me sistem RSVP dhe menaxhim të të ftuarve."
+    },
+    "stock": {
+      "title": "Sistem menaxhimi i stokut",
+      "description": "Një sistem për menaxhimin e stokut dhe ndjekjen e inventarit."
+    }
+  }
+}

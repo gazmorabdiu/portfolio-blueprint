@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
+import { richText } from "@/i18n/richText";
 
 const Footer = () => {
+  const { t } = useTranslation("footer");
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -10,11 +13,10 @@ const Footer = () => {
     >
       <div className="max-w-6xl mx-auto px-6 text-center">
         <p className="text-sm text-muted-foreground font-mono">
-          Designed & Built by{" "}
-          <span className="text-primary">Gazmor Abdiu</span>
+          <Trans t={t} i18nKey="designedBy" components={richText} />
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          Built with React, TypeScript & Tailwind CSS
+          {t("builtWith")}
         </p>
       </div>
     </motion.footer>
