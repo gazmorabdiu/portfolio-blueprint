@@ -17,6 +17,10 @@
         "Scalable media pipeline: decoupled microservices process images asynchronously, load-tested to 1,000 uploads/second on a 4GB RAM server"
       ]
     },
+    "danzo": {
+      "title": "Danzo Visuals",
+      "description": "Portfolio website for Danzo Visuals, a professional video and photography studio: multilingual (EN / AL / DE), services, portfolio, media and booking via WhatsApp."
+    },
     "valleyFestival": {
       "title": "Valley Film Festival",
       "description": "The official multi-language website of an international film festival in the Presevo Valley, serving as the event's public program and archive hub.",

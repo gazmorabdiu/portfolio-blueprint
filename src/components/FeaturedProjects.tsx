@@ -3,6 +3,7 @@ import { useRef } from "react";
 import {
   Camera,
   Film,
+  Video,
   Sparkles,
   Flag,
   Heart,
@@ -38,6 +39,7 @@ const projects: Project[] = [
     url: "https://festivalley.org/en/festival/2026",
     tech: ["Next.js", "i18n"],
   },
+  { id: "danzo", icon: Video, status: "live" },
   {
     id: "aiQuiz",
     icon: Sparkles,
